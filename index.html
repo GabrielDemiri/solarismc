@@ -140,6 +140,7 @@
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function() {
                 var copyMessage = document.getElementById('copyMessage');
+                copyMessage.textContent = "Copiato negli appunti!";
                 copyMessage.style.display = 'block';
                 copyMessage.style.opacity = '1';
                 setTimeout(function() {
