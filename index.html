@@ -43,6 +43,7 @@
         .server-info p {
             margin: 5px 0;
             font-size: 1.1em;
+            cursor: pointer; /* Make cursor pointer for copyable text */
         }
         .footer {
             margin-top: 20px;
@@ -90,6 +91,11 @@
         .staff-button:hover {
             background-color: #c0392b;
         }
+        #copyMessage {
+            display: none; /* Hide the copy message by default */
+            color: #2ecc71;
+            margin-top: 10px;
+        }
         @media (max-width: 600px) {
             .container {
                 width: 100%;
@@ -120,6 +126,19 @@
             }
         }
     </style>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                var copyMessage = document.getElementById('copyMessage');
+                copyMessage.style.display = 'block';
+                setTimeout(function() {
+                    copyMessage.style.display = 'none';
+                }, 2000);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -127,12 +146,12 @@
         <h1>Benvenuto su SolarisMC</h1>
         <div class="server-info">
             <h2>Versione Java</h2>
-            <p><strong>IP:</strong> solarismc.online</p>
+            <p onclick="copyToClipboard('play.solarismc.online')"><strong>IP:</strong> play.solarismc.online</p>
         </div>
         <div class="server-info">
             <h2>Versione Bedrock</h2>
-            <p><strong>IP:</strong> solarismc.online</p>
-            <p><strong>Porta:</strong> 25565</p>
+            <p onclick="copyToClipboard('bedrock.solarismc.online')"><strong>IP:</strong> bedrock.solarismc.online</p>
+            <p onclick="copyToClipboard('25576')"><strong>Porta:</strong> 25576</p>
         </div>
         <div class="button-container">
             <a href="https://discord.gg/C2X46yHShs" class="button">
@@ -145,6 +164,7 @@
                 <img src="images/staff-icon.png" alt="Staff Icon" class="icon">Lista dello Staff
             </a>
         </div>
+        <p id="copyMessage">Copiato negli appunti!</p>
         <p>Unisciti alla nostra community e divertiti nel mondo di SolarisMC!</p>
         <div class="footer">
             <p>&copy; 2024 SolarisMC. Tutti i diritti riservati.</p>
