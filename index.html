@@ -95,6 +95,16 @@
             display: none; /* Hide the copy message by default */
             color: #2ecc71;
             margin-top: 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
         @media (max-width: 600px) {
             .container {
@@ -131,8 +141,12 @@
             navigator.clipboard.writeText(text).then(function() {
                 var copyMessage = document.getElementById('copyMessage');
                 copyMessage.style.display = 'block';
+                copyMessage.style.opacity = '1';
                 setTimeout(function() {
-                    copyMessage.style.display = 'none';
+                    copyMessage.style.opacity = '0';
+                    setTimeout(function() {
+                        copyMessage.style.display = 'none';
+                    }, 500);
                 }, 2000);
             }, function(err) {
                 console.error('Could not copy text: ', err);
