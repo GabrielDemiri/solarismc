@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - SolarisMC</title>
+    <title>Server Minecraft - SolarisMC</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <style>
         body, html {
@@ -31,13 +31,16 @@
             color: #f39c12;
             margin-top: 10px;
         }
-        .content {
+        .server-info {
             margin: 20px 0;
             padding: 10px;
             background-color: #2c313c;
             border-radius: 10px;
         }
-        .content p {
+        .server-info h2 {
+            color: #e67e22;
+        }
+        .server-info p {
             margin: 5px 0;
             font-size: 1.1em;
         }
@@ -51,7 +54,7 @@
             height: auto;
             border-radius: 15px;
         }
-        .back-button {
+        .discord-button {
             display: inline-block;
             padding: 10px 20px;
             margin-top: 20px;
@@ -63,8 +66,23 @@
             cursor: pointer;
             text-decoration: none;
         }
-        .back-button:hover {
+        .discord-button:hover {
             background-color: #5b6eae;
+        }
+        .about-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #ffffff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .about-button:hover {
+            background-color: #2980b9;
         }
         @media (max-width: 600px) {
             .container {
@@ -72,10 +90,10 @@
                 margin: 10px;
                 padding: 15px;
             }
-            .content p {
+            .server-info p {
                 font-size: 1em;
             }
-            .back-button {
+            .discord-button, .about-button {
                 font-size: 1em;
                 padding: 8px 16px;
             }
@@ -84,10 +102,13 @@
             h1 {
                 font-size: 1.5em;
             }
-            .content p {
+            .server-info h2 {
+                font-size: 1.2em;
+            }
+            .server-info p {
                 font-size: 0.9em;
             }
-            .back-button {
+            .discord-button, .about-button {
                 font-size: 0.9em;
                 padding: 6px 12px;
             }
@@ -97,12 +118,19 @@
 <body>
     <div class="container">
         <img src="images/IMG_5831.png" alt="SolarisMC Logo" class="logo">
-        <h1>Chi Siamo</h1>
-        <div class="content">
-            <p>Benvenuto nella pagina "Chi Siamo" di SolarisMC!</p>
-            <p>Qui puoi trovare informazioni sulla nostra community e il nostro server.</p>
+        <h1>Benvenuto su SolarisMC</h1>
+        <a href="about.html" class="about-button">Chi Siamo</a>
+        <div class="server-info">
+            <h2>Versione Java</h2>
+            <p><strong>IP:</strong> solarismc.online</p>
         </div>
-        <a href="index.html" class="back-button">Torna alla Home</a>
+        <div class="server-info">
+            <h2>Versione Bedrock</h2>
+            <p><strong>IP:</strong> solarismc.online</p>
+            <p><strong>Porta:</strong> 25565</p>
+        </div>
+        <a href="https://discord.gg/C2X46yHShs" class="discord-button">Unisciti al nostro Discord</a>
+        <p>Unisciti alla nostra community e divertiti nel mondo di SolarisMC!</p>
         <div class="footer">
             <p>&copy; 2024 SolarisMC. Tutti i diritti riservati.</p>
         </div>
