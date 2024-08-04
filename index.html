@@ -80,20 +80,27 @@
             left: 0;
             top: 40px;
             background-color: #2c313c;
-            min-width: 160px;
+            min-width: 200px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
             border-radius: 5px;
+            animation: fadeIn 0.5s;
         }
         .dropdown-content a {
             color: #ffffff;
             padding: 12px 16px;
             text-decoration: none;
-            display: block;
+            display: flex;
+            align-items: center;
             text-align: left;
         }
         .dropdown-content a:hover {
             background-color: #575d69;
+        }
+        .dropdown-content img {
+            margin-right: 10px;
+            width: 20px;
+            height: auto;
         }
         .nav:hover .dropdown-content {
             display: block;
@@ -111,6 +118,10 @@
             white-space: nowrap; /* Prevent text wrapping */
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
     <script>
@@ -140,11 +151,21 @@
     <div class="nav">
         <img src="images/tab-icon.png" alt="Tab Icon">
         <div class="dropdown-content">
-            <a href="index.html">Home</a>
-            <a href="chisiamo.html">Chi Siamo</a>
-            <a href="staff.html">Lista dello Staff</a>
-            <a href="annunci.html">Annunci</a>
-            <a href="https://discord.gg/C2X46yHShs">Discord</a>
+            <a href="index.html">
+                <img src="images/home-icon.png" alt="Home Icon">Home
+            </a>
+            <a href="chisiamo.html">
+                <img src="images/about-icon.png" alt="About Icon">Chi Siamo
+            </a>
+            <a href="staff.html">
+                <img src="images/staff-icon.png" alt="Staff Icon">Lista dello Staff
+            </a>
+            <a href="annunci.html">
+                <img src="images/annunci-icon.png" alt="Annunci Icon">Annunci
+            </a>
+            <a href="https://discord.gg/C2X46yHShs">
+                <img src="images/discord-icon.png" alt="Discord Icon">Discord
+            </a>
         </div>
     </div>
     <div class="container">
@@ -175,3 +196,4 @@
     </div>
 </body>
 </html>
+
