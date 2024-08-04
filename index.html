@@ -94,17 +94,16 @@
         #copyMessage {
             display: none; /* Hide the copy message by default */
             color: #2ecc71;
-            margin-top: 10px;
             position: fixed;
-            top: 50%;
+            bottom: 20px;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px 20px;
             border-radius: 10px;
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
         }
         @media (max-width: 600px) {
             .container {
@@ -143,8 +142,10 @@
                 copyMessage.textContent = "Copiato negli appunti!";
                 copyMessage.style.display = 'block';
                 copyMessage.style.opacity = '1';
+                copyMessage.style.bottom = '40px';
                 setTimeout(function() {
                     copyMessage.style.opacity = '0';
+                    copyMessage.style.bottom = '20px';
                     setTimeout(function() {
                         copyMessage.style.display = 'none';
                     }, 500);
