@@ -74,10 +74,6 @@
             max-width: 80%;
             height: auto;
             border-radius: 15px;
-            transition: transform 0.3s;
-        }
-        .logo:hover {
-            transform: rotate(360deg);
         }
         .btn, .discord-btn {
             display: inline-block;
@@ -100,6 +96,14 @@
         }
         .discord-btn {
             background-color: #7289DA; /* Discord brand color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .discord-btn img {
+            margin-right: 10px; /* Space between icon and text */
+            width: 20px; /* Set width for smaller icons */
+            height: auto; /* Maintain aspect ratio */
         }
         .more-info-container {
             display: none;
@@ -111,6 +115,7 @@
             background: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         }
         .more-info-content {
             background: #2c313c;
@@ -121,6 +126,7 @@
             width: 400px;
             color: #ffffff;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            animation: fadeIn 0.3s;
         }
         .more-info-content a {
             color: #ffffff;
@@ -154,6 +160,10 @@
             background: #c0392b;
             transform: translateY(-5px);
         }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
     <script>
         function copyToClipboard(text, element) {
@@ -161,9 +171,19 @@
                 var copyMessage = document.createElement('span');
                 copyMessage.className = 'copy-message';
                 copyMessage.textContent = 'Copiato negli appunti!';
+                copyMessage.style.position = 'absolute';
+                copyMessage.style.top = '50%';
+                copyMessage.style.left = '110%';
+                copyMessage.style.transform = 'translateY(-50%)';
+                copyMessage.style.background = 'rgba(0, 0, 0, 0.7)';
+                copyMessage.style.color = '#fff';
+                copyMessage.style.padding = '5px 10px';
+                copyMessage.style.borderRadius = '5px';
+                copyMessage.style.whiteSpace = 'nowrap';
+                copyMessage.style.opacity = '0';
+                copyMessage.style.transition = 'opacity 0.3s ease';
                 element.appendChild(copyMessage);
                 setTimeout(function() {
-                    copyMessage.style.display = 'block';
                     copyMessage.style.opacity = '1';
                     setTimeout(function() {
                         copyMessage.style.opacity = '0';
@@ -205,23 +225,17 @@
                 <img src="images/copy-icon.png" alt="Copy Icon" class="copy-icon">
             </p>
         </div>
-        <p>Unisciti alla nostra community e divertiti nel mondo di SolarisMC!</p>
         <button class="btn" onclick="toggleMoreInfo()">Altre Info</button>
-        <a href="https://discord.gg/C2X46yHShs" class="discord-btn">Unisciti al nostro Discord</a>
+        <a href="https://discord.gg/C2X46yHShs" class="discord-btn">
+            <img src="images/discord-icon.png" alt="Discord Icon"> Unisciti al nostro Discord
+        </a>
         <div class="footer">
             <p>&copy; 2024 SolarisMC. Tutti i diritti riservati.</p>
         </div>
     </div>
-
-    <div id="more-info-container" class="more-info-container">
+    <div class="more-info-container" id="more-info-container">
         <div class="more-info-content">
             <button class="close-btn" onclick="toggleMoreInfo()">Chiudi</button>
-            <a href="home.html">
-                <img src="images/home-icon.png" alt="Home Icon">Home
-            </a>
-            <a href="chisiamo.html">
-                <img src="images/about-icon.png" alt="About Icon">Chi Siamo
-            </a>
             <a href="staff.html">
                 <img src="images/staff-icon.png" alt="Staff Icon">Staff
             </a>
