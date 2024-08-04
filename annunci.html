@@ -59,9 +59,39 @@
         .btn-home:hover {
             background-color: #87ceeb; /* Slightly lighter blue on hover */
         }
+        .nav {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .nav img {
+            width: 30px; /* Adjust icon size */
+            height: auto;
+            margin-right: 10px;
+        }
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        .nav a:hover {
+            color: #f39c12; /* Change color on hover */
+        }
     </style>
 </head>
 <body>
+    <div class="nav">
+        <img src="images/tab-icon.png" alt="Tab Icon">
+        <a href="index.html">Home</a>
+        <a href="chisiamo.html">Chi Siamo</a>
+        <a href="staff.html">Lista dello Staff</a>
+        <a href="annunci.html">Annunci</a>
+        <a href="https://discord.gg/C2X46yHShs">Discord</a>
+    </div>
     <div class="container">
         <h1>Annunci</h1>
         <div class="content">

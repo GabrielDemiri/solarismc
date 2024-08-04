@@ -65,47 +65,27 @@
             height: auto;
             border-radius: 15px;
         }
-        .button-container {
-            margin-top: 20px;
+        .nav {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
         }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            font-size: 1.1em;
-            color: #ffffff;
-            background-color: #7289DA;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .button:hover {
-            background-color: #5b6eae;
-        }
-        .icon {
+        .nav img {
+            width: 30px; /* Adjust icon size */
+            height: auto;
             margin-right: 10px;
-            vertical-align: middle; /* Align icon vertically in the middle */
-            width: 20px; /* Set width for smaller icons */
-            height: auto; /* Maintain aspect ratio */
         }
-        .about-button {
-            background-color: #3498db;
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
         }
-        .about-button:hover {
-            background-color: #2980b9;
-        }
-        .staff-button {
-            background-color: #e74c3c;
-        }
-        .staff-button:hover {
-            background-color: #c0392b;
-        }
-        .announcement-button {
-            background-color: #f39c12;
-        }
-        .announcement-button:hover {
-            background-color: #e67e22;
+        .nav a:hover {
+            color: #f39c12; /* Change color on hover */
         }
         .copy-message {
             display: none; /* Hide the copy message by default */
@@ -146,6 +126,14 @@
     </script>
 </head>
 <body>
+    <div class="nav">
+        <img src="images/tab-icon.png" alt="Tab Icon">
+        <a href="index.html">Home</a>
+        <a href="chisiamo.html">Chi Siamo</a>
+        <a href="staff.html">Lista dello Staff</a>
+        <a href="annunci.html">Annunci</a>
+        <a href="https://discord.gg/C2X46yHShs">Discord</a>
+    </div>
     <div class="container">
         <img src="images/IMG_5831.png" alt="SolarisMC Logo" class="logo">
         <h1>Benvenuto su SolarisMC</h1>
@@ -166,20 +154,6 @@
                 <strong>Porta:</strong> 25576
                 <img src="images/copy-icon.png" alt="Copy Icon" class="copy-icon">
             </p>
-        </div>
-        <div class="button-container">
-            <a href="https://discord.gg/C2X46yHShs" class="button">
-                <img src="images/discord-icon.png" alt="Discord Icon" class="icon">Unisciti al nostro Discord
-            </a>
-            <a href="chisiamo.html" class="button about-button">
-                <img src="images/about-icon.png" alt="About Icon" class="icon">Chi Siamo
-            </a>
-            <a href="staff.html" class="button staff-button">
-                <img src="images/staff-icon.png" alt="Staff Icon" class="icon">Lista dello Staff
-            </a>
-            <a href="annunci.html" class="button announcement-button">
-                <img src="images/announcement-icon.png" alt="Announcement Icon" class="icon">Annunci
-            </a>
         </div>
         <p>Unisciti alla nostra community e divertiti nel mondo di SolarisMC!</p>
         <div class="footer">
