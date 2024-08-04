@@ -44,6 +44,16 @@
             margin: 5px 0;
             font-size: 1.1em;
             cursor: pointer; /* Make cursor pointer for copyable text */
+            position: relative; /* Position relative for popup positioning */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .copy-icon {
+            margin-left: 10px; /* Space between text and icon */
+            width: 20px; /* Set width for smaller icons */
+            height: auto; /* Maintain aspect ratio */
+            cursor: pointer;
         }
         .footer {
             margin-top: 20px;
@@ -91,65 +101,38 @@
         .staff-button:hover {
             background-color: #c0392b;
         }
-        #copyMessage {
+        .copy-message {
             display: none; /* Hide the copy message by default */
             color: #2ecc71;
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: absolute;
+            left: 105%; /* Position right of the text */
+            top: 50%;
+            transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 10px;
-            z-index: 1000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap; /* Prevent text wrapping */
             opacity: 0;
-            transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
-        }
-        @media (max-width: 600px) {
-            .container {
-                width: 100%;
-                margin: 10px;
-                padding: 15px;
-            }
-            .server-info p {
-                font-size: 1em;
-            }
-            .button {
-                font-size: 1em;
-                padding: 8px 16px;
-            }
-        }
-        @media (max-width: 400px) {
-            h1 {
-                font-size: 1.5em;
-            }
-            .server-info h2 {
-                font-size: 1.2em;
-            }
-            .server-info p {
-                font-size: 0.9em;
-            }
-            .button {
-                font-size: 0.9em;
-                padding: 6px 12px;
-            }
+            transition: opacity 0.3s ease-in-out;
         }
     </style>
     <script>
-        function copyToClipboard(text) {
+        function copyToClipboard(text, element) {
             navigator.clipboard.writeText(text).then(function() {
-                var copyMessage = document.getElementById('copyMessage');
-                copyMessage.textContent = "Copiato negli appunti!";
-                copyMessage.style.display = 'block';
-                copyMessage.style.opacity = '1';
-                copyMessage.style.bottom = '40px';
+                var copyMessage = document.createElement('span');
+                copyMessage.className = 'copy-message';
+                copyMessage.textContent = 'Copiato negli appunti!';
+                element.appendChild(copyMessage);
                 setTimeout(function() {
-                    copyMessage.style.opacity = '0';
-                    copyMessage.style.bottom = '20px';
+                    copyMessage.style.display = 'block';
+                    copyMessage.style.opacity = '1';
                     setTimeout(function() {
-                        copyMessage.style.display = 'none';
-                    }, 500);
-                }, 2000);
+                        copyMessage.style.opacity = '0';
+                        setTimeout(function() {
+                            element.removeChild(copyMessage);
+                        }, 300);
+                    }, 2000);
+                }, 10);
             }, function(err) {
                 console.error('Could not copy text: ', err);
             });
@@ -162,12 +145,21 @@
         <h1>Benvenuto su SolarisMC</h1>
         <div class="server-info">
             <h2>Versione Java</h2>
-            <p onclick="copyToClipboard('play.solarismc.online')"><strong>IP:</strong> play.solarismc.online</p>
+            <p onclick="copyToClipboard('play.solarismc.online', this)">
+                <strong>IP:</strong> play.solarismc.online
+                <img src="images/copy-icon.png" alt="Copy Icon" class="copy-icon">
+            </p>
         </div>
         <div class="server-info">
             <h2>Versione Bedrock</h2>
-            <p onclick="copyToClipboard('bedrock.solarismc.online')"><strong>IP:</strong> bedrock.solarismc.online</p>
-            <p onclick="copyToClipboard('25576')"><strong>Porta:</strong> 25576</p>
+            <p onclick="copyToClipboard('bedrock.solarismc.online', this)">
+                <strong>IP:</strong> bedrock.solarismc.online
+                <img src="images/copy-icon.png" alt="Copy Icon" class="copy-icon">
+            </p>
+            <p onclick="copyToClipboard('25576', this)">
+                <strong>Porta:</strong> 25576
+                <img src="images/copy-icon.png" alt="Copy Icon" class="copy-icon">
+            </p>
         </div>
         <div class="button-container">
             <a href="https://discord.gg/C2X46yHShs" class="button">
@@ -180,7 +172,6 @@
                 <img src="images/staff-icon.png" alt="Staff Icon" class="icon">Lista dello Staff
             </a>
         </div>
-        <p id="copyMessage">Copiato negli appunti!</p>
         <p>Unisciti alla nostra community e divertiti nel mondo di SolarisMC!</p>
         <div class="footer">
             <p>&copy; 2024 SolarisMC. Tutti i diritti riservati.</p>
