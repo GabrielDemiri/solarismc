@@ -26,78 +26,69 @@
             max-width: 90%;
             width: 500px;
             margin: 20px auto; /* Center the container */
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         h1 {
             color: #f39c12;
             margin-top: 10px;
+            transition: transform 0.3s;
+        }
+        h1:hover {
+            transform: scale(1.1);
         }
         .content {
             margin: 20px 0;
             padding: 10px;
             background-color: #2c313c;
             border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .content:hover {
+            transform: translateY(-10px);
+            background-color: #3a3f4b;
+        }
+        .content p {
+            font-size: 1.1em;
+            line-height: 1.5em;
+            text-align: left;
         }
         .footer {
             margin-top: 20px;
-            padding: 10px;
-            background-color: #2c313c;
-            border-radius: 10px;
             font-size: 0.9em;
             color: #7f8c8d;
         }
-        .btn-home {
+        .btn {
             display: inline-block;
             padding: 10px 20px;
             margin-top: 20px;
-            background-color: #00bfff; /* Light blue color */
+            background-color: #00bfff;
             color: #ffffff;
             text-decoration: none;
             font-size: 1em;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .btn-home:hover {
-            background-color: #87ceeb; /* Slightly lighter blue on hover */
-        }
-        .nav {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            display: flex;
-            align-items: center;
-        }
-        .nav img {
-            width: 30px; /* Adjust icon size */
-            height: auto;
-            margin-right: 10px;
-        }
-        .nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
-        }
-        .nav a:hover {
-            color: #f39c12; /* Change color on hover */
+        .btn:hover {
+            background-color: #87ceeb;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body>
-    <div class="nav">
-        <img src="images/tab-icon.png" alt="Tab Icon">
-        <a href="index.html">Home</a>
-        <a href="chisiamo.html">Chi Siamo</a>
-        <a href="staff.html">Lista dello Staff</a>
-        <a href="annunci.html">Annunci</a>
-        <a href="https://discord.gg/C2X46yHShs">Discord</a>
-    </div>
     <div class="container">
         <h1>Annunci</h1>
         <div class="content">
             <p>Ci stiamo lavorando...</p>
         </div>
-        <a href="index.html" class="btn-home">Ritorna alla Home</a>
+        <button class="btn" onclick="window.location.href='index.html'">Ritorna alla Home</button>
         <div class="footer">
             <p>&copy; 2024 SolarisMC. Tutti i diritti riservati.</p>
         </div>

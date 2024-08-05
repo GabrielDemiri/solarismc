@@ -16,7 +16,7 @@
             color: #ffffff;
             text-align: center;
             box-sizing: border-box;
-            overflow-y: auto; /* Allow vertical scrolling */
+            overflow-y: auto;
         }
         .container {
             background-color: rgba(28,31,38,0.9);
@@ -25,8 +25,13 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             max-width: 90%;
             width: 500px;
-            margin: 20px auto; /* Center the container */
+            margin: 20px auto;
             position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         h1 {
             color: #f39c12;
@@ -53,17 +58,17 @@
         .server-info p {
             margin: 5px 0;
             font-size: 1.1em;
-            cursor: pointer; /* Make cursor pointer for copyable text */
-            position: relative; /* Position relative for popup positioning */
+            cursor: pointer;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: color 0.3s;
         }
         .copy-icon {
-            margin-left: 10px; /* Space between text and icon */
-            width: 20px; /* Set width for smaller icons */
-            height: auto; /* Maintain aspect ratio */
+            margin-left: 10px;
+            width: 20px;
+            height: auto;
             cursor: pointer;
         }
         .copy-message {
@@ -93,31 +98,31 @@
             display: inline-block;
             padding: 10px 20px;
             margin-top: 20px;
-            background-color: #00bfff; /* Light blue color */
+            background-color: #00bfff;
             color: #ffffff;
             text-decoration: none;
             font-size: 1em;
             border-radius: 5px;
             transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s;
             cursor: pointer;
-            border: none; /* Remove border for a cleaner look */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .btn:hover, .discord-btn:hover {
-            background-color: #87ceeb; /* Slightly lighter blue on hover */
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+            background-color: #87ceeb;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
             transform: translateY(-5px);
         }
         .discord-btn {
-            background-color: #7289DA; /* Discord brand color */
+            background-color: #7289DA;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .discord-btn img {
-            margin-right: 10px; /* Space between icon and text */
-            width: 20px; /* Set width for smaller icons */
-            height: auto; /* Maintain aspect ratio */
+            margin-right: 10px;
+            width: 20px;
+            height: auto;
         }
         .more-info-container {
             display: none;
@@ -139,7 +144,7 @@
             max-width: 80%;
             width: 400px;
             color: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             animation: fadeIn 0.3s;
         }
         .more-info-content h2 {
@@ -187,10 +192,6 @@
             background: #c0392b;
             transform: translateY(-5px);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
     </style>
     <script>
         function copyToClipboard(text, element) {
@@ -198,17 +199,6 @@
                 var copyMessage = document.createElement('span');
                 copyMessage.className = 'copy-message';
                 copyMessage.textContent = 'Copiato negli appunti!';
-                copyMessage.style.position = 'absolute';
-                copyMessage.style.top = '50%';
-                copyMessage.style.left = '110%';
-                copyMessage.style.transform = 'translateY(-50%)';
-                copyMessage.style.background = 'rgba(0, 0, 0, 0.7)';
-                copyMessage.style.color = '#fff';
-                copyMessage.style.padding = '5px 10px';
-                copyMessage.style.borderRadius = '5px';
-                copyMessage.style.whiteSpace = 'nowrap';
-                copyMessage.style.opacity = '0';
-                copyMessage.style.transition = 'opacity 0.3s ease';
                 element.appendChild(copyMessage);
                 setTimeout(function() {
                     copyMessage.style.opacity = '1';
@@ -267,7 +257,7 @@
                 </div>
                 <div class="info-item">
                     <img src="images/staff-icon.png" alt="Staff Icon">
-                    <a href="lista-staffers.html">Lista Staffers</a>
+                    <a href="staff.html">Lista Staffers</a>
                 </div>
                 <div class="info-item">
                     <img src="images/announcement-icon.png" alt="Announcement Icon">
