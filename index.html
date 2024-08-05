@@ -142,23 +142,36 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
             animation: fadeIn 0.3s;
         }
-        .more-info-content a {
-            color: #ffffff;
-            text-decoration: none;
+        .more-info-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .more-info-content .info-item {
+            background-color: #2c313c;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #444;
-            transition: color 0.3s ease, transform 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
-        .more-info-content a:hover {
+        .more-info-content .info-item:hover {
+            background-color: #3a3f4b;
+            transform: translateY(-5px);
+        }
+        .more-info-content .info-item img {
+            margin-right: 10px;
+            width: 20px;
+            height: auto;
+        }
+        .more-info-content .info-item a {
+            color: #ffffff;
+            text-decoration: none;
+            flex-grow: 1;
+            transition: color 0.3s;
+        }
+        .more-info-content .info-item a:hover {
             color: #00bfff;
-            transform: translateX(10px);
-        }
-        .more-info-content a img {
-            margin-right: 10px; /* Space between icon and text */
-            width: 20px; /* Set width for smaller icons */
-            height: auto; /* Maintain aspect ratio */
         }
         .close-btn {
             background: #e74c3c;
@@ -248,18 +261,18 @@
             <div class="more-info-content">
                 <button class="close-btn" onclick="toggleMoreInfo()">Chiudi</button>
                 <h2>Altre Info</h2>
-                <a href="chisiamo.html">
+                <div class="info-item">
                     <img src="images/info-icon.png" alt="Info Icon">
-                    Chi Siamo
-                </a>
-                <a href="lista-staffers.html">
+                    <a href="chisiamo.html">Chi Siamo</a>
+                </div>
+                <div class="info-item">
                     <img src="images/staff-icon.png" alt="Staff Icon">
-                    Lista Staffers
-                </a>
-                <a href="annunci.html">
+                    <a href="lista-staffers.html">Lista Staffers</a>
+                </div>
+                <div class="info-item">
                     <img src="images/announcement-icon.png" alt="Announcement Icon">
-                    Annunci
-                </a>
+                    <a href="annunci.html">Annunci</a>
+                </div>
             </div>
         </div>
         <div class="footer">
