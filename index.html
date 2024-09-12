@@ -94,11 +94,10 @@
             height: auto;
             border-radius: 15px;
         }
-        .btn, .discord-btn {
+        .btn, .discord-btn, .support-btn {
             display: inline-block;
             padding: 10px 20px;
             margin-top: 20px;
-            background-color: #00bfff;
             color: #ffffff;
             text-decoration: none;
             font-size: 1em;
@@ -108,8 +107,7 @@
             border: none;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .btn:hover, .discord-btn:hover {
-            background-color: #87ceeb;
+        .btn:hover, .discord-btn:hover, .support-btn:hover {
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
             transform: translateY(-5px);
         }
@@ -120,6 +118,17 @@
             justify-content: center;
         }
         .discord-btn img {
+            margin-right: 10px;
+            width: 20px;
+            height: auto;
+        }
+        .support-btn {
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .support-btn img {
             margin-right: 10px;
             width: 20px;
             height: auto;
@@ -246,6 +255,11 @@
         <a href="https://discord.gg/yck54SNqGS" class="discord-btn">
             <img src="images/discord-icon.png" alt="Discord Icon">
             Unisciti al Discord
+        </a>
+        <!-- Nuovo pulsante "Mail di Supporto" -->
+        <a href="mailto:support@solarismc.online" class="support-btn">
+            <img src="images/mail-icon.png" alt="Mail Icon">
+            Mail di Supporto
         </a>
         <div id="more-info-container" class="more-info-container">
             <div class="more-info-content">
