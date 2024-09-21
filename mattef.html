@@ -53,19 +53,49 @@
         input#cc-number {
             letter-spacing: 4px;
         }
+        /* Stile per l'input della password */
+        .password-input {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .password-input input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+        .password-input .show-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <div id="password-form">
+    <div class="password-input">
         <label for="password">Inserisci la password:</label>
-        <input type="password" id="password">
-        <button id="submit-btn">Invia</button>
+        <input type="password" id="password" placeholder="Inserisci la password">
+        <span class="show-password">Mostra</span>
     </div>
+    <button id="submit-btn">Invia</button>
 
     <script>
-        const passwordForm = document.getElementById('password-form');
-        const submitBtn = document.getElementById('submit-btn');
         const passwordInput = document.getElementById('password');
+        const showPassword = document.querySelector('.show-password');
+        const submitBtn = document.getElementById('submit-btn');
+
+        showPassword.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                showPassword.textContent = 'Nascondi';
+            } else {
+                passwordInput.type = 'password';
+                showPassword.textContent = 'Mostra';
+            }
+        });
 
         submitBtn.addEventListener('click', (e) => {
             e.preventDefault();
