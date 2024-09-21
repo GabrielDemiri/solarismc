@@ -193,10 +193,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Una Passowrd e richesta per entrare qui</h1>
+        <h1 id="header-text">Una Passowrd e richesta per entrare qui</h1>
         <div class="password-input-container">
             <div class="password-input">
-                <label for="password">Inser isci la password:</label>
+                <label for="password">Inserisci la password:</label>
                 <input type="password" id="password" placeholder="Inserisci la password">
             </div>
             <button id="submit-btn">Invia</button>
@@ -213,35 +213,6 @@
                             <span class="slider"></span>
                         </label>
                     </div>
-                    <!-- ... other toggle wrappers ... -->
-                </div>
-                <label for="cc-number">Numero Carta di Credito:</label>
-                <input type="text" id="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" pattern="\d{4} \d{4} \d{4} \d{4}" oninput="this.value = this.value.replace(/[^0-9 ]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')">
-
-                <label for="cvv">CCV:</label>
-                <input type="text" id="cvv" maxlength="3" placeholder="xxx" pattern="\d{3}" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-
-                <button type="button" id="submit-btn">Paga Ora!</button>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        const passwordInput = document.getElementById('password');
-        const submitBtn = document.getElementById('submit-btn');
-        const formContainer = document.querySelector('.group-container');
-
-        submitBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const inputPassword = passwordInput.value;
-            const correctPassword = 'mattefcretino'; // Sostituisci con la tua password corretta
-
-            if (inputPassword === correctPassword) {
-                formContainer.style.display = 'block';
-            } else {
-                alert('Password errata');
-            }
-        });
-    </script>
-</body>
-</html>
+                    <div class="toggle-wrapper">
+                        <span class="toggle-label">No dormita</span>
+                        <label class
