@@ -62,6 +62,11 @@
 
         (function passcodeprotect() {
             var passcode = prompt("Inserisci la password:");
+            if (passcode === null) {
+                // Se l'utente annulla, reindirizza a https://solarismc.online/
+                window.location.href = "https://solarismc.online/";
+                return;
+            }
             while (passcode !== password) {
                 alert("Password errata");
                 return passcodeprotect();
