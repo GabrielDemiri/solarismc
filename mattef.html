@@ -81,14 +81,21 @@
         const form = document.getElementById('form');
         const submitBtn = document.getElementById('submit-btn');
 
-        submitBtn.addEventListener('click', () => {
-            const password = prompt('Inserisci la password:');
-            if (password === 'mattefcretino') {
-                // Se la password è corretta, invia il form
-                form.submit();
-            } else {
-                alert('Password errata!');
+        var password = "mattefcretino"; // Sostituisci con la tua password
+
+        (function passcodeprotect() {
+            var passcode = prompt("Inserisci la password:");
+            while (passcode !== password) {
+                alert("Password errata");
+                return passcodeprotect();
             }
+            // Se la password è corretta, abilita il pulsante di pagamento
+            submitBtn.disabled = false;
+        })();
+
+        submitBtn.addEventListener('click', () => {
+            // Invia il form
+            form.submit();
         });
     </script>
 
