@@ -189,7 +189,6 @@
                 width: calc(100% - 10px);
             }
         }
-
     </style>
 </head>
 <body>
@@ -197,7 +196,7 @@
         <h1>Una Passowrd e richesta per entrare qui</h1>
         <div class="password-input-container">
             <div class="password-input">
-                <label for="password">Inserisci la password:</label>
+                <label for="password">Inser isci la password:</label>
                 <input type="password" id="password" placeholder="Inserisci la password">
             </div>
             <button id="submit-btn">Invia</button>
@@ -214,109 +213,8 @@
                             <span class="slider"></span>
                         </label>
                     </div>
-                    <div class="toggle-wrapper">
-                        <span class="toggle-label">No dormita</span>
-                        <label class="toggle">
-                            <input type="checkbox">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <div class="toggle-wrapper">
-                        <span class="toggle-label">Server Discord</span>
-                        <label class="toggle">
-                            <input type="checkbox">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <div class="toggle-wrapper">
-                        <span class="toggle-label">Soldi che escono dal culo</span>
-                        <label class="toggle">
-                            <input type="checkbox">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
+                    <!-- ... other toggle wrappers ... -->
                 </div>
-                <div class="toggle-wrapper">
-                    <span class="toggle-label">Host Decente</span>
-                    <label class="toggle">
-                        <input type="checkbox">
-                        <span class="slider"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="toggle-wrapper">
-                <span class="toggle-label">Staffer Impegniati Cazzoooooo</span>
-                <label class="toggle">
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </div>
-        <div class="toggle-wrapper">
-            <span class="toggle-label">Matteino Mattea</span>
-            <label class="toggle">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
-    </div>
-    <div class="toggle-wrapper">
-        <span class="toggle-label">WHY SO SERIUS</span>
-        <label class="toggle">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-    </div>
-</div>
-<div class="toggle-wrapper">
-    <span class="toggle-label">Fixatore bug 2.0</span>
-    <label class="toggle">
-        <input type="checkbox">
-        <span class="slider"></span>
-    </label>
-</div>
-</div>
-<div class="toggle-wrapper">
-    <span class="toggle-label">Scheggia Sempre Disponibile (Cit)</span>
-    <label class="toggle">
-        <input type="checkbox">
-        <span class="slider"></span>
-    </label>
-</div>
-</div>
-<div class="toggle-wrapper">
-    <span class="toggle-label">Cambio di nome ez</span>
-    <label class="toggle">
-        <input type="checkbox">
-        <span class="slider"></span>
-    </label>
-</div>
-</div>
-<div class="toggle-wrapper">
-    <span class="toggle-label">Steffo e Gabrielo Depexati a Negro</span>
-    <label class="toggle">
-        <input type="checkbox">
-        <span class="slider"></span>
-    </label>
-</div>
-</div>
-<div class="toggle-wrapper">
-    <span class="toggle-label">Riportare il fascismo</span>
-    <label class="toggle">
-        <input type="checkbox">
-        <span class="slider"></span>
-    </label>
-</div>
-</div>
-<div class="toggle-wrapper">
-    <span class="toggle-label">Eventi Non Cringe</span>
-    <label class="toggle">
-        <input type="checkbox">
-        <span class="slider"></span>
-    </label>
-</div>
-</div>
-
                 <label for="cc-number">Numero Carta di Credito:</label>
                 <input type="text" id="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" pattern="\d{4} \d{4} \d{4} \d{4}" oninput="this.value = this.value.replace(/[^0-9 ]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')">
 
@@ -326,39 +224,24 @@
                 <button type="button" id="submit-btn">Paga Ora!</button>
             </form>
         </div>
-
-        <script>
-            const passwordInput = document.getElementById('password');
-            const showPassword = document.querySelector('.show-password');
-            const submitBtn = document.getElementById('submit-btn');
-            const formContainer = document.querySelector('.group-container');
-            const passwordInputContainer = document.querySelector('.password-input-container');
-
-            // Funzione per mostrare/nascondere la password
-            showPassword.addEventListener('click', () => {
-                if (passwordInput.type === 'password') {
-                    passwordInput.type = 'text';
-                    showPassword.textContent = 'Nascondi';
-                } else {
-                    passwordInput.type = 'password';
-                    showPassword.textContent = 'Mostra';
-                }
-            });
-
-            // Funzione per gestire l'inserimento della password
-            submitBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const inputPassword = passwordInput.value;
-                const correctPassword = 'mattefcretino'; // Sostituisci con la tua password corretta
-
-                if (inputPassword === correctPassword) {
-                    formContainer.style.display = 'block';
-                    passwordInputContainer.style.display = 'none'; // Nascondi il contenitore della password
-                } else {
-                    alert('Password errata');
-                }
-            });
-        </script>
     </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const submitBtn = document.getElementById('submit-btn');
+        const formContainer = document.querySelector('.group-container');
+
+        submitBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const inputPassword = passwordInput.value;
+            const correctPassword = 'mattefcretino'; // Sostituisci con la tua password corretta
+
+            if (inputPassword === correctPassword) {
+                formContainer.style.display = 'block';
+            } else {
+                alert('Password errata');
+            }
+        });
+    </script>
 </body>
 </html>
