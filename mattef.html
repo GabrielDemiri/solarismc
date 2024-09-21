@@ -215,4 +215,38 @@
                     </div>
                     <div class="toggle-wrapper">
                         <span class="toggle-label">No dormita</span>
-                        <label class
+                        <label class="toggle">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class ="toggle-wrapper">
+                        <span class="toggle-label">Sborra Nucleare Geyser e altre cazzate</span>
+                        <label class="toggle">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            const passwordInput = document.getElementById('password');
+            const submitBtn = document.getElementById('submit-btn');
+            const groupContainer = document.querySelector('.group-container');
+
+            submitBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (passwordInput.value === 'your_password_here') {
+                    passwordInput.style.display = 'none';
+                    document.getElementById('header-text').style.display = 'none';
+                    groupContainer.style.display = 'block';
+                } else {
+                    alert('Password errata!');
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>
