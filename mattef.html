@@ -57,6 +57,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s, background-color 0.3s;
+            display: none; /* Hide the group container by default */
         }
         .group-container:hover {
             transform: translateY(-10px);
@@ -64,6 +65,10 @@
         }
 
         /* Password Input Styles */
+        .password-input-container {
+            margin-bottom: 20px;
+        }
+
         .password-input {
             position: relative;
             margin-bottom: 20px;
@@ -105,14 +110,16 @@
 <body>
     <div class="container">
         <h1>Scheggia Nuvola Hosting</h1>
-        <div class="password-input">
-            <label for="password">Inserisci la password:</label>
-            <input type="password" id="password" placeholder="Inserisci la password">
-            <span class="show-password">Mostra</span>
+        <div class="password-input-container">
+            <div class="password-input">
+                <label for="password">Inserisci la password:</label>
+                <input type="password" id="password" placeholder="Inserisci la password">
+                <span class="show-password">Mostra</span>
+            </div>
+            <button id="submit-btn">Invia</button>
         </div>
-        <button id="submit-btn">Invia</button>
 
-        <div class="group-container" style="display: none;">
+        <div class="group-container">
             <h2>Form</h2>
             <form id="form">
                 <div class="checkbox-group">
@@ -120,13 +127,6 @@
                     <label><input type="checkbox"> Fai Sito</label>
                     <label><input type="checkbox"> Staffer che si impegnano</label>
                     <label><input type="checkbox"> Mail custom host decente</label>
-                    <label><input type="checkbox"> Sborra Nucleare</label>
-                    <label><input type="checkbox"> Fixatore Di Bug incluso nel prezzo</label>
-                    <label><input type="checkbox"> Geyser e altre minghiate</label>
-                    <label><input type="checkbox"> Sito</label>
-                    <label><input type="checkbox"> Scheggia Quality</label>
-                    <label><input type="checkbox"> Dominio e i DNS</label>
-                    <label><input type="checkbox"> Server discord</label>
                 </div>
 
                 <label for="cc-number">Numero Carta di Credito:</label>
@@ -138,10 +138,39 @@
                 <button type="button" id="submit-btn">Paga Ora!</button>
             </form>
         </div>
-    </div>
 
-    <script>
-        // Your JavaScript code here
-    </script>
+        <script>
+            const passwordInput = document.getElementById('password');
+            const showPassword = document.querySelector('.show-password');
+            const submitBtn = document.getElementById('submit-btn');
+            const formContainer = document.querySelector('.group-container');
+            const passwordInputContainer = document.querySelector('.password-input-container');
+
+            // Funzione per mostrare/nascondere la password
+            showPassword.addEventListener('click', () => {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    showPassword.textContent = 'Nascondi';
+                } else {
+                    passwordInput.type = 'password';
+                    showPassword.textContent = 'Mostra';
+                }
+            });
+
+            // Funzione per gestire l'inserimento della password
+            submitBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const inputPassword = passwordInput.value;
+                const correctPassword = 'mattefcretino'; // Sostituisci con la tua password corretta
+
+                if (inputPassword === correctPassword) {
+                    formContainer.style.display = 'block';
+                    passwordInputContainer.style.display = 'none'; // Nascondi il contenitore della password
+                } else {
+                    alert('Password errata');
+                }
+            });
+        </script>
+    </div>
 </body>
 </html>
