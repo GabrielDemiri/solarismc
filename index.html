@@ -199,7 +199,14 @@
         }
         .close-btn:hover {
             background: #c0392b;
-            transform: translateY(-5px);
+            transform: translateY(- 5px);
+        }
+        .more-info-btn {
+            background-color: #e74c3c; /* red color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s;
         }
     </style>
     <script>
@@ -251,7 +258,6 @@
                 <img src="images/copy-icon.png" alt="Copy Icon" class="copy-icon">
             </p>
         </div>
-        <button class="btn" onclick="toggleMoreInfo()">Altre Info</button>
         <a href="https://discord.gg/yck54SNqGS" class="discord-btn">
             <img src="images/discord-icon.png" alt="Discord Icon">
             Unisciti al Discord
@@ -261,6 +267,7 @@
             <img src="images/mail-icon.png" alt="Mail Icon">
             Mail di Supporto
         </a>
+        <button class="btn more-info-btn" onclick="toggleMoreInfo()">Altre Info</button>
         <div id="more-info-container" class="more-info-container">
             <div class="more-info-content">
                 <button class="close-btn" onclick="toggleMoreInfo()">Chiudi</button>
@@ -284,4 +291,4 @@
         </div>
     </div>
 </body>
-</html> 
+</html>
