@@ -54,35 +54,26 @@
             letter-spacing: 4px;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/bcrypt@5.0.1/dist/bcrypt.min.js"></script>
 </head>
 <body>
+    <div id="password-form">
+        <label for="password">Inserisci la password:</label>
+        <input type="password" id="password">
+        <button id="submit-btn">Invia</button>
+    </div>
 
     <script>
-        const bcrypt = require('bcrypt');
+        const passwordForm = document.getElementById('password-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const passwordInput = document.getElementById('password');
 
-        // Imposta la password e il sale
-        const password = 'mattefcretino';
-        const salt = bcrypt.genSaltSync(10);
+        submitBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const inputPassword = passwordInput.value;
+            const correctPassword = 'mattefcretino'; // Replace with your desired password
 
-        // Hash la password
-        const hashedPassword = bcrypt.hashSync(password, salt);
-
-        // Memorizza la password hashata
-        var storedPassword = hashedPassword;
-
-        (function passcodeprotect() {
-            var passcode = prompt("Inserisci la password:");
-            if (passcode === null) {
-                // Se l'utente annulla, reindirizza a https://solarismc.online/
-                window.location.href = "https://solarismc.online/";
-                return;
-            }
-            const inputPassword = passcode;
-            const hashedInputPassword = bcrypt.hashSync(inputPassword, salt);
-            if (bcrypt.compareSync(hashedInputPassword, storedPassword)) {
-                // La password è corretta
-                // Mostra il contenuto del sito
+            if (inputPassword === correctPassword) {
+                // Show the content
                 document.body.innerHTML = `
                     <div class="container">
                         <h1>Scheggia Nuvola Hosting</h1>
@@ -113,9 +104,8 @@
                 });
             } else {
                 alert("Password errata");
-                return passcodeprotect();
             }
-        })();
+        });
     </script>
 
 </body>
