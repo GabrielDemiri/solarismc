@@ -56,64 +56,52 @@
     </style>
 </head>
 <body>
-    <div id="password-form">
-        <label for="password">Sei su una pagina riservata! Inserisci la password:</label>
-        <input type="password" id="password">
-        <button id="submit-btn">Invia</button>
-    </div>
 
     <script>
-        const passwordForm = document.getElementById('password-form');
-        const submitBtn = document.getElementById('submit-btn');
-        const passwordInput = document.getElementById('password');
+        const correctPassword = 'mattefcretino'; // Replace with your desired password
+        const inputPassword = prompt('Sei su una pagina riservata! Inserisci la password:');
 
-        submitBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const inputPassword = passwordInput.value;
-            const correctPassword = 'mattefcretino'; // Replace with your desired password
+        if (inputPassword === correctPassword) {
+            // Show the content
+            document.body.innerHTML = `
+                <div class="container">
+                    <h1>Scheggia Nuvola Hosting</h1>
+                    <form id="form">
+                        <div class="checkbox-group">
+                            <label><input type="checkbox"> Setta Plugins</label>
+                            <label><input type="checkbox"> Fai Sito</label>
+                            <label><input type="checkbox"> Staffer che si impegnano</label>
+                            <label><input type="checkbox"> Mail custom host decente</label>
+                            <label><input type="checkbox"> Server Discord</label>
+                            <label><input type="checkbox"> Fixatore Di Bug 2.0</label>
+                            <label><input type="checkbox"> Geyser e Ste cagate</label>
+                            <label><input type="checkbox"> Depex Di steffo e gabrielo</label>
+                            <label><input type="checkbox"> Riportare Il fascismo</label>
+                            <label><input type="checkbox"> Scheggia risponde sempre in buoni tempi (Cit)</label>
+                            <label><input type="checkbox"> Anticheat</label>
+                            <label><input type="checkbox"> Glich Money Free</label>
+                        </div>
 
-            if (inputPassword === correctPassword) {
-                // Show the content
-                document.body.innerHTML = `
-                    <div class="container">
-                        <h1>Scheggia Nuvola Hosting</h1>
-                        <form id="form">
-                            <div class="checkbox-group">
-                                <label><input type="checkbox"> Setta Plugins</label>
-                                <label><input type="checkbox"> Fai Sito</label>
-                                <label><input type="checkbox"> Staffer che si impegnano</label>
-                                <label><input type="checkbox"> Mail custom host decente</label>
-                                <label><input type="checkbox"> Server Discord</label>
-                                <label><input type="checkbox"> Fixatore Di Bug 2.0</label>
-                                <label><input type="checkbox"> Geyser e Ste cagate</label>
-                                <label><input type="checkbox"> Depex Di steffo e gabrielo</label>
-                                <label><input type="checkbox"> Riportare Il fascismo</label>
-                                <label><input type="checkbox"> Scheggia risponde sempre in buoni tempi (Cit)</label>
-                                <label><input type="checkbox"> Anticheat</label>
-                                <label><input type="checkbox"> Glich Money Free</label>
-                            </div>
+                        <label for="cc-number">Numero Carta di Credito:</label>
+                        <input type="text" id="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" pattern="\\d{4} \\d{4} \\d{4} \\d{4}" oninput="this.value = this.value.replace(/[^0-9 ]/g, '').replace(/(\\d{4})(?=\\d)/g, '$1 ')">
 
-                            <label for="cc-number">Numero Carta di Credito:</label>
-                            <input type="text" id="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" pattern="\d{4} \d{4} \d{4} \d{4}" oninput="this.value = this.value.replace(/[^0-9 ]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')">
+                        <label for="cvv">CCV:</label>
+                        <input type="text" id="cvv" maxlength="3" placeholder="xxx" pattern="\\d{3}" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
 
-                            <label for="cvv">CCV:</label>
-                            <input type="text" id="cvv" maxlength="3" placeholder="xxx" pattern="\d{3}" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                        <button type="button" id="submit-btn">Paga Ora!</button>
+                    </form>
+                </div>
+            `;
+            const form = document.getElementById('form');
+            const submitBtn = document.getElementById('submit-btn');
 
-                            <button type="button" id="submit-btn">Paga Ora!</button>
-                        </form>
-                    </div>
-                `;
-                const form = document.getElementById('form');
-                const submitBtn = document.getElementById('submit-btn');
-
-                submitBtn.addEventListener('click', () => {
-                    // Invia il form
-                    form.submit();
-                });
-            } else {
-                alert("Password errata");
-            }
-        });
+            submitBtn.addEventListener('click', () => {
+                // Invia il form
+                form.submit();
+            });
+        } else {
+            alert("Password errata");
+        }
     </script>
 
 </body>
