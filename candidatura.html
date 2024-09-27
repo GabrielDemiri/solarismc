@@ -6,68 +6,91 @@
     <title>Candidatura Staff - SolarisMC</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+        body, html {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle, rgba(255,165,0,1) 0%, rgba(44,49,60,1) 100%);
+            color: #ffffff;
+            text-align: center;
+            box-sizing: border-box;
+            overflow-y: auto;
         }
         .container {
-            background-color: #fff;
-            border-radius: 10px;
+            background-color: rgba(28,31,38,0.9);
             padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            width: 500px;
+            margin: 20px auto;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         h1 {
-            text-align: center;
-            color: #333;
+            color: #f39c12;
+            margin-top: 10px;
+            transition: transform 0.3s;
+        }
+        h1:hover {
+            transform: scale(1.1);
         }
         .question-container {
-            margin-bottom: 15px;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #2c313c;
+            border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
         }
-        label {
+        .question-container:hover {
+            transform: translateY(-10px);
+            background-color: #3a3f4b;
+        }
+        .question-container label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
+            margin: 5px 0;
         }
         input[type="text"],
         input[type="email"],
+        input[type="number"],
         textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px;
+            font-size: 1em;
+            margin-top: 5px;
             transition: border-color 0.3s;
         }
         input[type="text"]:focus,
         input[type="email"]:focus,
+        input[type="number"]:focus,
         textarea:focus {
-            border-color: #007BFF;
+            border-color: #f39c12;
             outline: none;
         }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #007BFF;
-            color: #fff;
+        button.btn {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 10px 20px;
+            margin-top: 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease, transform 0.3s;
         }
-        .btn:hover {
-            background-color: #0056b3;
+        button.btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-5px);
         }
         #submission-response {
             display: none;
-            text-align: center;
             margin-top: 20px;
         }
     </style>
@@ -75,6 +98,7 @@
 </head>
 <body>
     <div class="container">
+        <img src="images/IMG_5831.png" alt="SolarisMC Logo" class="logo">
         <h1>Candidatura Staff - SolarisMC</h1>
         <form id="staff-application-form">
             <div class="question-container">
@@ -91,11 +115,15 @@
             </div>
             <div class="question-container">
                 <label for="previous-experience">Hai esperienze precedenti come staff in altri server?</label>
-                <textarea id="previous-experience" name="previous-experience" required></textarea>
+                <textarea id="previous-experience" name="previous-experience"></textarea>
             </div>
             <div class="question-container">
-                <label for="age">Età (minimo 12 anni):</label>
-                <input type="text" id="age" name="age" required>
+                <label for="availability">Quanto tempo sei disponibile a dedicare allo staff ogni settimana?</label>
+                <input type="number" id="availability" name="availability" required>
+            </div>
+            <div class="question-container">
+                <label for="age">Età:</label>
+                <input type="number" id="age" name="age" min="12" required>
             </div>
             <div class="question-container">
                 <label for="additional-info">Informazioni aggiuntive:</label>
@@ -104,24 +132,24 @@
             <button class="btn" type="submit">Invia Candidatura</button>
         </form>
         <div id="submission-response">
-            <p>Grazie per la tua candidatura! Ti faremo sapere al più presto via email.</p>
+            <p>Grazie per la tua candidatura! Ti faremo sapere al più presto possibile via mail.</p>
             <a href="https://solarismc.online">Visita il nostro sito web</a>
         </div>
     </div>
     <script>
         const form = document.getElementById('staff-application-form');
-        let lastSubmission = 0;
+        let lastSubmission = 0; // Timestamp of the last submission
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
             const currentTime = Date.now();
-            if (currentTime - lastSubmission < 5 * 60 * 1000) {
-                alert("Puoi inviare la candidatura solo ogni 5 minuti.");
+            if (currentTime - lastSubmission < 5 * 60 * 1000) { // 5 minutes
+                alert('Puoi inviare la candidatura solo ogni 5 minuti.');
                 return;
             }
 
-            grecaptcha.execute('6LfrClEqAAAAAO310UPo8PI94_CmcNSu_5igQkeM', { action: 'submit' }).then((token) => {
+            grecaptcha.execute('6LfrClEqAAAAAO310UPo8PI94_CmcNSu_5igQkeM', {action: 'submit'}).then((token) => {
                 const formData = new FormData(form);
                 const webhookUrl = 'https://discord.com/api/webhooks/1289312405708607559/GgO1Oc6FgNigs6NOcuMlVbK3lG6XP_Lsa8rfSo4zIjQNaX_X9NXvmNvojz4xhgcFvjb_';
                 fetch(webhookUrl, {
@@ -136,6 +164,7 @@
                             fields: [
                                 { name: 'Perché vuoi unirti allo staff di SolarisMC?', value: formData.get('why-join') },
                                 { name: 'Hai esperienze precedenti come staff in altri server?', value: formData.get('previous-experience') },
+                                { name: 'Disponibilità settimanale', value: formData.get('availability') },
                                 { name: 'Età', value: formData.get('age') },
                                 { name: 'Informazioni aggiuntive', value: formData.get('additional-info') }
                             ]
@@ -143,9 +172,8 @@
                     })
                 }).then((response) => {
                     if (response.ok) {
-                        lastSubmission = Date.now(); // Aggiorna l'ora dell'ultima submission
                         document.getElementById('submission-response').style.display = 'block';
-                        form.reset(); // Resetta il modulo dopo l'invio
+                        lastSubmission = currentTime; // Update last submission timestamp
                     } else {
                         console.error('Error submitting form:', response.status);
                     }
