@@ -41,29 +41,19 @@
         h1:hover {
             transform: scale(1.1);
         }
-        .server-info {
+        .question-container {
             margin: 20px 0;
-            padding: 10px;
+            padding: 15px;
             background-color: #2c313c;
             border-radius: 10px;
             transition: transform 0.3s, background-color 0.3s;
         }
-        .server-info:hover {
-            transform: translateY(-10px);
+        .question-container:hover {
+            transform: translateY(-5px);
             background-color: #3a3f4b;
         }
-        .server-info h2 {
+        .question-container h2 {
             color: #e67e22;
-        }
-        .server-info p {
-            margin: 5px 0;
-            font-size: 1.1em;
-            cursor: pointer;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: color 0.3s;
         }
         input[type="text"], input[type="email"], input[type="number"], textarea {
             width: calc(100% - 20px);
@@ -120,39 +110,34 @@
         <img src="images/IMG_5831.png" alt="SolarisMC Logo" class="logo">
         <h1>Candidatura Staff - SolarisMC</h1>
         <form id="staff-application-form">
-            <div class="server-info">
+            <div class="question-container">
                 <h2>Informazioni Personali</h2>
-                <p>
-                    <label for="nickname">Nickname di gioco:</label>
-                    <input type="text" id="nickname" name="nickname" required>
-                </p>
-                <p>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </p>
-                <p>
-                    <label for="age">Età (minimo 12 anni):</label>
-                    <input type="number" id="age" name="age" min="12" required>
-                </p>
+                <label for="nickname">Nickname di gioco:</label>
+                <input type="text" id="nickname" name="nickname" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="age">Età (minimo 12 anni):</label>
+                <input type="number" id="age" name="age" min="12" required>
             </div>
-            <div class="server-info">
+            <div class="question-container">
                 <h2>Domande sul Server</h2>
-                <p>
-                    <label for="why-join">Perché vuoi unirti allo staff di SolarisMC?</label>
-                    <textarea id="why-join" name="why-join" required></textarea>
-                </p>
-                <p>
-                    <label for="previous-experience">Hai esperienze precedenti come staff in altri server?</label>
-                    <textarea id="previous-experience" name="previous-experience"></textarea>
-                </p>
-                <p>
-                    <label for="availability">Quanto tempo sei disponibile a dedicare allo staff ogni settimana?</label>
-                    <input type="number" id="availability" name="availability" required>
-                </p>
-                <p>
-                    <label for="additional-info">Informazioni aggiuntive:</label>
-                    <textarea id="additional-info" name="additional-info"></textarea>
-                </p>
+                <label for="why-join">Perché vuoi unirti allo staff di SolarisMC?</label>
+                <textarea id="why-join" name="why-join" required></textarea>
+            </div>
+            <div class="question-container">
+                <h2>Esperienze Precedenti</h2>
+                <label for="previous-experience">Hai esperienze precedenti come staff in altri server?</label>
+                <textarea id="previous-experience" name="previous-experience"></textarea>
+            </div>
+            <div class="question-container">
+                <h2>Disponibilità</h2>
+                <label for="availability">Quanto tempo sei disponibile a dedicare allo staff ogni settimana?</label>
+                <input type="number" id="availability" name="availability" required>
+            </div>
+            <div class="question-container">
+                <h2>Informazioni Aggiuntive</h2>
+                <label for="additional-info">Informazioni aggiuntive:</label>
+                <textarea id="additional-info" name="additional-info"></textarea>
             </div>
             <div class="g-recaptcha" data-sitekey="6LfrClEqAAAAAO310UPo8PI94_CmcNSu_5igQkeM"></div>
             <button class="btn" type="submit">Invia Candidatura</button>
