@@ -180,7 +180,11 @@
                         lastSubmission = currentTime; // Update last submission timestamp
                     } else {
                         console.error('Error submitting form:', response.status);
+                        alert('C\'è stato un problema nell\'invio della candidatura. Riprova più tardi.');
                     }
+                }).catch(error => {
+                    console.error('Fetch error:', error);
+                    alert('C\'è stato un problema nell\'invio della candidatura. Riprova più tardi.');
                 });
             });
         });
