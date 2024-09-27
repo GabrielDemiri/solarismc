@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidatura Staff - SolarisMC</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle, rgba(255,165,0,1) 0%, rgba(44,49,60,1) 100%);
+            color: #ffffff;
+            text-align: center;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .container {
+            background-color: rgba(28,31,38,0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            width: 500px;
+            margin: 20px auto;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1 {
+            color: #f39c12;
+            margin-top: 10px;
+            transition: transform 0.3s;
+        }
+        h1:hover {
+            transform: scale(1.1);
+        }
+        .server-info {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #2c313c;
+            border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .server-info:hover {
+            transform: translateY(-10px);
+            background-color: #3a3f4b;
+        }
+        .server-info h2 {
+            color: #e67e22;
+        }
+        .server-info p {
+            margin: 5px 0;
+            font-size: 1.1em;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+        input[type="text"], input[type="email"], input[type="number"], textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            background: #2c313c;
+            color: #ffffff;
+            transition: border-color 0.3s, background 0.3s;
+            margin-top: 5px;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, textarea:focus {
+            border-color: #f39c12;
+            outline: none;
+            background: #3a3f4b;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        .logo {
+            max-width: 80%;
+            height: auto;
+            border-radius: 15px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s;
+            cursor: pointer;
+            background-color: #3498db;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn:hover {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/IMG_5831.png" alt="SolarisMC Logo" class="logo">
+        <h1>Candidatura Staff - SolarisMC</h1>
+        <form id="staff-application-form">
+            <div class="server-info">
+                <h2>Informazioni Personali</h2>
+                <p>
+                    <label for="nickname">Nickname di gioco:</label>
+                    <input type="text" id="nickname" name="nickname" required>
+                </p>
+                <p>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </p>
+                <p>
+                    <label for="age">Età (minimo 12 anni):</label>
+                    <input type="number" id="age" name="age" min="12" required>
+                </p>
+            </div>
+            <div class="server-info">
+                <h2>Domande sul Server</h2>
+                <p>
+                    <label for="why-join">Perché vuoi unirti allo staff di SolarisMC?</label>
+                    <textarea id="why-join" name="why-join" required></textarea>
+                </p>
+                <p>
+                    <label for="previous-experience">Hai esperienze precedenti come staff in altri server?</label>
+                    <textarea id="previous-experience" name="previous-experience"></textarea>
+                </p>
+                <p>
+                    <label for="availability">Quanto tempo sei disponibile a dedicare allo staff ogni settimana?</label>
+                    <input type="number" id="availability" name="availability" required>
+                </p>
+                <p>
+                    <label for="additional-info">Informazioni aggiuntive:</label>
+                    <textarea id="additional-info" name="additional-info"></textarea>
+                </p>
+            </div>
+            <div class="g-recaptcha" data-sitekey="6LfrClEqAAAAAO310UPo8PI94_CmcNSu_5igQkeM"></div>
+            <button class="btn" type="submit">Invia Candidatura</button>
+        </form>
+        <div id="submission-response" style="display: none;">
+            <p>Grazie per la tua candidatura!</p>
+            <a href="https://solarismc.online">Visita il nostro sito web</a>
+        </div>
+    </div>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        const form = document.getElementById('staff-application-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const webhookUrl = 'https://discord.com/api/webhooks/1289312405708607559/GgO1Oc6FgNigs6NOcuMlVbK3lG6XP_Lsa8rfSo4zIjQNaX_X9NXvmNvojz4xhgcFvjb_';
+            fetch(webhookUrl, {
+                method: 'POST',
+                body: JSON.stringify({
+                    content: "Nuova candidatura staff!",
+                    embeds: [{
+                        title: "Dettagli della Candidatura",
+                        fields: [
+                            { name: "Nickname di gioco", value: formData.get('nickname'), inline: true },
+                            { name: "Email", value: formData.get('email'), inline: true },
+                            { name: "Età", value: formData.get('age'), inline: true },
+                            { name: "Perché vuoi unirti allo staff?", value: formData.get('why-join'), inline: false },
+                            { name: "Esperienze precedenti", value: formData.get('previous-experience') || "Nessuna", inline: false },
+                            { name: "Tempo disponibile", value: formData.get('availability') + " ore", inline: true },
+                            { name: "Informazioni aggiuntive", value: formData.get('additional-info') || "Nessuna", inline: false }
+                        ],
+                        color: 16753920
+                    }]
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('submission-response').style.display = 'block';
+                    form.reset();
+                } else {
+                    alert("Errore durante l'invio della candidatura. Riprova più tardi.");
+                }
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+                alert("Errore durante l'invio della candidatura. Riprova più tardi.");
+            });
+        });
+    </script>
+</body>
+</html>
