@@ -20,7 +20,7 @@
         }
         .container {
             background-color: rgba(28,31,38,0.9);
-            padding: 20px;
+            padding: 15px;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             max-width: 90%;
@@ -42,14 +42,15 @@
             transform: scale(1.1);
         }
         .server-info {
-            margin: 20px 0;
+            margin: 15px 0;
             padding: 10px;
             background-color: #2c313c;
             border-radius: 10px;
             transition: transform 0.3s, background-color 0.3s;
+            position: relative;
         }
         .server-info:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             background-color: #3a3f4b;
         }
         .server-info h2 {
@@ -57,7 +58,7 @@
         }
         .server-info p {
             margin: 5px 0;
-            font-size: 1.1em;
+            font-size: 0.9em;
             cursor: pointer;
             position: relative;
             display: flex;
@@ -65,9 +66,16 @@
             justify-content: center;
             transition: color 0.3s;
         }
+        .server-info .status-message {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85em;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
         .copy-icon {
             margin-left: 10px;
-            width: 20px;
+            width: 16px;
             height: auto;
             cursor: pointer;
         }
@@ -86,7 +94,7 @@
         }
         .footer {
             margin-top: 20px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #7f8c8d;
         }
         .logo {
@@ -96,11 +104,11 @@
         }
         .btn, .discord-btn, .support-btn {
             display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
+            padding: 8px 16px;
+            margin-top: 15px;
             color: #ffffff;
             text-decoration: none;
-            font-size: 1em;
+            font-size: 0.9em;
             border-radius: 5px;
             transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s;
             cursor: pointer;
@@ -119,7 +127,7 @@
         }
         .discord-btn img {
             margin-right: 10px;
-            width: 20px;
+            width: 18px;
             height: auto;
         }
         .support-btn {
@@ -129,8 +137,8 @@
             justify-content: center;
         }
         .support-btn img {
-            margin-right:  10px;
-            width: 20px;
+            margin-right: 10px;
+            width: 18px;
             height: auto;
         }
         .more-info-container {
@@ -152,7 +160,7 @@
             text-align: left;
             max-width: 80%;
             width: 400px;
-            color: #e09f13;
+            color: #e0e0e0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             animation: fadeIn 0.3s;
         }
@@ -175,11 +183,11 @@
         }
         .more-info-content .info-item img {
             margin-right: 10px;
-            width: 20px;
+            width: 18px;
             height: auto;
         }
         .more-info-content .info-item a {
-            color: #ffffff;
+            color: #b0b0b0;
             text-decoration: none;
             flex-grow: 1;
             transition: color 0.3s;
@@ -190,7 +198,7 @@
         .close-btn {
             background: #e74c3c;
             color: #ffffff;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -199,14 +207,20 @@
         }
         .close-btn:hover {
             background: #c0392b;
-            transform: translateY(- 5px);
+            transform: translateY(-5px);
         }
         .more-info-btn {
-            background-color: #e74c3c; /* red color */
+            background-color: #e74c3c;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s;
+        }
+        .status-icon {
+            width: 18px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle;
         }
     </style>
     <script>
@@ -246,6 +260,10 @@
                 <strong>IP:</strong> play.solarismc.online
                 <img src="images/copy-icon.png" alt="Copy Icon" class="copy-icon">
             </p>
+            <p class="status-message">
+                <img src="images/info.png" alt="Status Icon" class="status-icon">
+                Il server è stato chiuso. Maggiori informazioni_<a href="https://solarismc.online/chiuso" style="color: hsl(0, 0%, 69%);"> Premendo questo Link</a>
+            </p>
         </div>
         <div class="server-info">
             <h2>Versione Bedrock</h2>
@@ -257,12 +275,15 @@
                 <strong>Porta:</strong> 19132
                 <img src="images/copy-icon.png" alt="Copy Icon" class="copy-icon">
             </p>
+            <p class="status-message">
+                <img src="images/info.png" alt="Status Icon" class="status-icon">
+                Il server è stato chiuso. Maggiori informazioni_<a href="https://solarismc.online/chiuso" style="color: hsl(0, 1%, 55%);"> Premendo questo Link</a>
+            </p>
         </div>
         <a href="https://discord.gg/yck54SNqGS" class="discord-btn">
             <img src="images/discord-icon.png" alt="Discord Icon">
             Unisciti al Discord
         </a>
-        <!-- Nuovo pulsante "Mail di Supporto" -->
         <a href="mailto:support@solarismc.online" class="support-btn">
             <img src="images/mail-icon.png" alt="Mail Icon">
             Mail di Supporto
@@ -273,7 +294,7 @@
                 <button class="close-btn" onclick="toggleMoreInfo()">Chiudi</button>
                 <h2>Altre Info</h2>
                 <div class="info-item">
-                    <img src="images/info-icon.png" alt="Info Icon">
+                    <img src="images/professional-info-icon.png" alt="Info Icon">
                     <a href="https://solarismc.online/chisiamo">Chi Siamo</a>
                 </div>
                 <div class="info-item">
