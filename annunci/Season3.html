@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli Annuncio - SolarisMC</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle, rgba(255,165,0,1) 0%, rgba(44,49,60,1) 100%);
+            color: #ffffff;
+            text-align: center;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .container {
+            background-color: rgba(28,31,38,0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            width: 600px;
+            margin: 20px auto;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1, h2 {
+            color: #f39c12;
+            margin-top: 10px;
+            transition: transform 0.3s;
+        }
+        h1:hover, h2:hover {
+            transform: scale(1.1);
+        }
+        .content {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #2c313c;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .content p {
+            font-size: 1.1em;
+            line-height: 1.5em;
+        }
+        .images {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .images img {
+            width: 30%;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .images img:hover {
+            transform: scale(1.1);
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #00bfff;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn:hover {
+            background-color: #87ceeb;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dettagli sul Reset della Season</h1>
+        <div class="content">
+            <h2>Un Nuovo Inizio il ? Settembre!</h2>
+            <p>Siamo entusiasti di annunciare che il ? settembre si terrà un reset completo del mondo di SolarisMC. Con la fine della stagione attuale, tutti i giocatori avranno la possibilità di ricominciare da capo, esplorare nuove aree, competere in nuove sfide, e partecipare a eventi unici! Non perdere questa opportunità di vivere l'esperienza SolarisMC al massimo!</p>
+            <p>Durante questa nuova season, introdurremo aggiornamenti significativi che includeranno nuovi biomi, dungeon inediti, eventi a tema e tanto altro. Questo è solo l'inizio di una serie di novità che renderanno il gioco ancora più coinvolgente e divertente per tutti!</p>
+        </div>
+        <div class="images">
+            <img src="images/season1.jpg" alt="Vecchia Season 1">
+            <img src="images/season2.jpg" alt="Vecchia Season 2">
+            <img src="images/season3.jpg" alt="Vecchia Season 3">
+        </div>
+        <button class="btn" onclick="window.location.href='https://solarismc.online/annunci'">Torna agli Annunci</button>
+        <div class="footer">
+            <p>&copy; 2025 SolarisMC. Tutti i diritti riservati.</p>
+        </div>
+    </div>
+</body>
+</html>
