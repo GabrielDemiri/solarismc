@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domain Expiration Countdown</title>
+    <title>the end</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,7 +15,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 50%, #d35400 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -37,7 +38,7 @@
 
         .particle {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 193, 7, 0.3);
             border-radius: 50%;
             animation: float 6s ease-in-out infinite;
         }
@@ -66,18 +67,26 @@
         }
 
         .countdown-container {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
             border-radius: 30px;
             padding: 60px 40px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 193, 7, 0.3);
             animation: pulse 2s ease-in-out infinite alternate;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2); }
-            100% { transform: scale(1.02); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3); }
+            0% { 
+                transform: scale(1); 
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+                border-color: rgba(255, 193, 7, 0.3);
+            }
+            100% { 
+                transform: scale(1.02); 
+                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+                border-color: rgba(255, 193, 7, 0.5);
+            }
         }
 
         .countdown {
@@ -99,22 +108,28 @@
             font-family: 'Orbitron', monospace;
             font-size: 4rem;
             font-weight: 900;
-            color: #ffffff;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            color: #f39c12;
+            text-shadow: 0 0 20px rgba(243, 156, 18, 0.8);
             animation: glow 2s ease-in-out infinite alternate;
             line-height: 1;
             margin-bottom: 10px;
         }
 
         @keyframes glow {
-            0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3); }
-            100% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.5); }
+            0% { 
+                text-shadow: 0 0 20px rgba(243, 156, 18, 0.8), 0 0 30px rgba(243, 156, 18, 0.5);
+                color: #f39c12;
+            }
+            100% { 
+                text-shadow: 0 0 30px rgba(255, 193, 7, 1), 0 0 40px rgba(243, 156, 18, 0.8);
+                color: #ffc107;
+            }
         }
 
         .time-label {
             font-family: 'Orbitron', monospace;
             font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 193, 7, 0.9);
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 400;
@@ -123,7 +138,7 @@
         .expiration-text {
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 193, 7, 0.8);
             font-weight: 300;
             letter-spacing: 1px;
             margin-top: 20px;
@@ -131,12 +146,12 @@
         }
 
         @keyframes fadeInOut {
-            0%, 100% { opacity: 0.7; }
+            0%, 100% { opacity: 0.8; }
             50% { opacity: 1; }
         }
 
         .expired {
-            color: #ff6b6b;
+            color: #e74c3c;
             font-weight: 700;
             animation: blink 1s ease-in-out infinite;
         }
@@ -150,30 +165,33 @@
             display: inline-block;
             margin-top: 30px;
             padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            border: 2px solid rgba(255, 193, 7, 0.5);
             border-radius: 50px;
-            color: #ffffff;
+            color: #000000;
             text-decoration: none;
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
-            font-weight: 400;
+            font-weight: 600;
             letter-spacing: 1px;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             animation: buttonGlow 3s ease-in-out infinite alternate;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .visit-site-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
+            background: linear-gradient(45deg, #e67e22, #d35400);
+            border-color: rgba(255, 193, 7, 0.8);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.4);
+            color: #ffffff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         @keyframes buttonGlow {
-            0% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
-            100% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.4); }
+            0% { box-shadow: 0 0 15px rgba(243, 156, 18, 0.4); }
+            100% { box-shadow: 0 0 25px rgba(255, 193, 7, 0.6); }
         }
 
         /* Responsive design */
@@ -258,7 +276,7 @@
                 domain expiration
             </div>
             <a href="indexold.html" class="visit-site-btn">
-                visita comunque il sito
+                visit the site anyway
             </a>
         </div>
     </div>
