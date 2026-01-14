@@ -1,339 +1,319 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>the end</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <title>SolarisMC</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <style>
-        * {
+        body, html {
             margin: 0;
             padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle, rgba(255,165,0,1) 0%, rgba(44,49,60,1) 100%);
+            color: #ffffff;
+            text-align: center;
             box-sizing: border-box;
+            overflow-y: auto;
         }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f39c12 0%, #e67e22 50%, #d35400 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+        .container {
+            background-color: rgba(28,31,38,0.9);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            width: 500px;
+            margin: 20px auto;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1 {
+            color: #f39c12;
+            margin-top: 10px;
+            transition: transform 0.3s;
+        }
+        h1:hover {
+            transform: scale(1.1);
+        }
+        .server-info {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #2c313c;
+            border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
             position: relative;
         }
-
-        /* Animated background particles */
-        .particles {
+        .server-info:hover {
+            transform: translateY(-5px);
+            background-color: #3a3f4b;
+        }
+        .server-info h2 {
+            color: #e67e22;
+        }
+        .server-info p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+        .server-info .status-message {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85em;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .copy-icon {
+            margin-left: 10px;
+            width: 16px;
+            height: auto;
+            cursor: pointer;
+        }
+        .copy-message {
             position: absolute;
+            top: 50%;
+            left: 110%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.85em;
+            color: #7f8c8d;
+        }
+        .logo {
+            max-width: 80%;
+            height: auto;
+            border-radius: 15px;
+        }
+        .btn, .discord-btn, .support-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-top: 15px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn:hover, .discord-btn:hover, .support-btn:hover {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        .discord-btn {
+            background-color: #7289DA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .discord-btn img {
+            margin-right: 10px;
+            width: 18px;
+            height: auto;
+        }
+        .support-btn {
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .support-btn img {
+            margin-right: 10px;
+            width: 18px;
+            height: auto;
+        }
+        .more-info-container {
+            display: none;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255, 193, 7, 0.3);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .particle:nth-child(1) { width: 10px; height: 10px; left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { width: 15px; height: 15px; left: 20%; animation-delay: 1s; }
-        .particle:nth-child(3) { width: 8px; height: 8px; left: 30%; animation-delay: 2s; }
-        .particle:nth-child(4) { width: 12px; height: 12px; left: 40%; animation-delay: 3s; }
-        .particle:nth-child(5) { width: 6px; height: 6px; left: 50%; animation-delay: 4s; }
-        .particle:nth-child(6) { width: 14px; height: 14px; left: 60%; animation-delay: 5s; }
-        .particle:nth-child(7) { width: 9px; height: 9px; left: 70%; animation-delay: 1.5s; }
-        .particle:nth-child(8) { width: 11px; height: 11px; left: 80%; animation-delay: 2.5s; }
-        .particle:nth-child(9) { width: 7px; height: 7px; left: 90%; animation-delay: 3.5s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-        }
-
-        .container {
-            text-align: center;
-            z-index: 10;
-            position: relative;
-        }
-
-        .countdown-container {
             background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 60px 40px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 193, 7, 0.3);
-            animation: pulse 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes pulse {
-            0% { 
-                transform: scale(1); 
-                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-                border-color: rgba(255, 193, 7, 0.3);
-            }
-            100% { 
-                transform: scale(1.02); 
-                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-                border-color: rgba(255, 193, 7, 0.5);
-            }
-        }
-
-        .countdown {
-            display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .time-unit {
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            min-width: 120px;
+            z-index: 1000;
         }
-
-        .time-number {
-            font-family: 'Orbitron', monospace;
-            font-size: 4rem;
-            font-weight: 900;
-            color: #f39c12;
-            text-shadow: 0 0 20px rgba(243, 156, 18, 0.8);
-            animation: glow 2s ease-in-out infinite alternate;
-            line-height: 1;
+        .more-info-content {
+            background: #2c313c;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            max-width: 80%;
+            width: 400px;
+            color: #e0e0e0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s;
+        }
+        .more-info-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .more-info-content .info-item {
+            background-color: #2c313c;
+            padding: 10px;
+            border-radius: 10px;
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s, transform 0.3s;
         }
-
-        @keyframes glow {
-            0% { 
-                text-shadow: 0 0 20px rgba(243, 156, 18, 0.8), 0 0 30px rgba(243, 156, 18, 0.5);
-                color: #f39c12;
-            }
-            100% { 
-                text-shadow: 0 0 30px rgba(255, 193, 7, 1), 0 0 40px rgba(243, 156, 18, 0.8);
-                color: #ffc107;
-            }
+        .more-info-content .info-item:hover {
+            background-color: #3a3f4b;
+            transform: translateY(-5px);
         }
-
-        .time-label {
-            font-family: 'Orbitron', monospace;
-            font-size: 1rem;
-            color: rgba(255, 193, 7, 0.9);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 400;
+        .more-info-content .info-item img {
+            margin-right: 10px;
+            width: 18px;
+            height: auto;
         }
-
-        .expiration-text {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            color: rgba(255, 193, 7, 0.8);
-            font-weight: 300;
-            letter-spacing: 1px;
-            margin-top: 20px;
-            animation: fadeInOut 3s ease-in-out infinite;
-        }
-
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
-        }
-
-        .expired {
-            color: #e74c3c;
-            font-weight: 700;
-            animation: blink 1s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.3; }
-        }
-
-        .visit-site-btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: linear-gradient(45deg, #f39c12, #e67e22);
-            border: 2px solid rgba(255, 193, 7, 0.5);
-            border-radius: 50px;
-            color: #000000;
+        .more-info-content .info-item a {
+            color: #b0b0b0;
             text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            animation: buttonGlow 3s ease-in-out infinite alternate;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            flex-grow: 1;
+            transition: color 0.3s;
         }
-
-        .visit-site-btn:hover {
-            background: linear-gradient(45deg, #e67e22, #d35400);
-            border-color: rgba(255, 193, 7, 0.8);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.4);
+        .more-info-content .info-item a:hover {
+            color: #01bfff;
+        }
+        .close-btn {
+            background: #e74c3c;
             color: #ffffff;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s;
+            float: right;
         }
-
-        @keyframes buttonGlow {
-            0% { box-shadow: 0 0 15px rgba(243, 156, 18, 0.4); }
-            100% { box-shadow: 0 0 25px rgba(255, 193, 7, 0.6); }
+        .close-btn:hover {
+            background: #c0392b;
+            transform: translateY(-5px);
         }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .countdown-container {
-                padding: 40px 20px;
-                margin: 20px;
-            }
-            
-            .countdown {
-                gap: 20px;
-            }
-            
-            .time-unit {
-                min-width: 80px;
-            }
-            
-            .time-number {
-                font-size: 2.5rem;
-            }
-            
-            .time-label {
-                font-size: 0.8rem;
-            }
+        .more-info-btn {
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s;
         }
-
-        @media (max-width: 480px) {
-            .time-number {
-                font-size: 2rem;
-            }
-            
-            .time-unit {
-                min-width: 60px;
-            }
-            
-            .countdown {
-                gap: 15px;
-            }
-
-            .visit-site-btn {
-                padding: 12px 24px;
-                font-size: 0.9rem;
-                margin-top: 20px;
-            }
+        .status-icon {
+            width: 18px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle;
         }
     </style>
-</head>
-<body>
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-    </div>
-
-    <div class="container">
-        <div class="countdown-container">
-            <div class="countdown" id="countdown">
-                <div class="time-unit">
-                    <div class="time-number" id="days">00</div>
-                    <div class="time-label">Days</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-number" id="hours">00</div>
-                    <div class="time-label">Hours</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-number" id="minutes">00</div>
-                    <div class="time-label">Minutes</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-number" id="seconds">00</div>
-                    <div class="time-label">Seconds</div>
-                </div>
-            </div>
-            <div class="expiration-text" id="expiration-text">
-                domain expiration
-            </div>
-            <a href="indexold.html" class="visit-site-btn">
-                visit the site anyway
-            </a>
-        </div>
-    </div>
-
     <script>
-        // Set the target date (August 1, 2025)
-        const targetDate = new Date('2025-08-01T00:00:00').getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const timeLeft = targetDate - now;
-
-            if (timeLeft > 0) {
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-                // Add leading zeros and update display
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            } else {
-                // Countdown expired
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-                
-                const expirationText = document.getElementById('expiration-text');
-                expirationText.textContent = 'domain expired';
-                expirationText.classList.add('expired');
-            }
+        function copyToClipboard(text, element) {
+            navigator.clipboard.writeText(text).then(function() {
+                var copyMessage = document.createElement('span');
+                copyMessage.className = 'copy-message';
+                copyMessage.textContent = 'Copiato negli appunti!';
+                element.appendChild(copyMessage);
+                setTimeout(function() {
+                    copyMessage.style.opacity = '1';
+                    setTimeout(function() {
+                        copyMessage.style.opacity = '0';
+                        setTimeout(function() {
+                            element.removeChild(copyMessage);
+                        }, 300);
+                    }, 2000);
+                }, 10);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
         }
 
-        // Update countdown immediately and then every second
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // Add some interactive effects
-        document.addEventListener('mousemove', (e) => {
-            const container = document.querySelector('.countdown-container');
-            const rect = container.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            
-            const rotateX = (y / rect.height) * 10;
-            const rotateY = (x / rect.width) * -10;
-            
-            container.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-        });
-
-        document.addEventListener('mouseleave', () => {
-            const container = document.querySelector('.countdown-container');
-            container.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-        });
+        function toggleMoreInfo() {
+            var moreInfoContainer = document.getElementById('more-info-container');
+            moreInfoContainer.style.display = moreInfoContainer.style.display === 'flex' ? 'none' : 'flex';
+        }
     </script>
+</head>
+<body>
+    <div class="container">
+        <img src="images/IMG_5831.png" alt="SolarisMC Logo" class="logo">
+        <h1>Benvenuto su SolarisMC</h1>
+        <div class="server-info">
+            <h2>Versione Java</h2>
+            <p onclick="copyToClipboard('play.solarismc.online', this)">
+                <strong>IP:</strong> play.solarismc.online
+                <img src="images/copy-icon.png" alt="Copy Icon" class="copy-icon">
+            </p>
+            <p class="status-message">
+                <img src="images/info.png" alt="Status Icon" class="status-icon">
+                Il server è stato chiuso. Maggiori informazioni_<a href="https://solarismc.online/chiuso" style="color: hsl(0, 0%, 69%);"> Premendo questo Link</a>
+            </p>
+        </div>
+        <div class="server-info">
+            <h2>Versione Bedrock</h2>
+            <p onclick="copyToClipboard('bedrock.solarismc.online', this)">
+                <strong>IP:</strong> bedrock.solarismc.online
+                <img src="images/copy-icon.png" alt="Copy Icon" class="copy-icon">
+            </p>
+            <p onclick="copyToClipboard('19132', this)">
+                <strong>Porta:</strong> 19132
+                <img src="images/copy-icon.png" alt="Copy Icon" class="copy-icon">
+            </p>
+            <p class="status-message">
+                <img src="images/info.png" alt="Status Icon" class="status-icon">
+                Il server è stato chiuso. Maggiori informazioni_<a href="https://solarismc.online/chiuso" style="color: hsl(0, 1%, 55%);"> Premendo questo Link</a>
+            </p>
+        </div>
+        <a href="https://discord.gg/yck54SNqGS" class="discord-btn">
+            <img src="images/discord-icon.png" alt="Discord Icon">
+            Unisciti al Discord
+        </a>
+        <a href="mailto:support@solarismc.online" class="support-btn">
+            <img src="images/mail-icon.png" alt="Mail Icon">
+            Mail di Supporto (CHIUSA)
+        </a>
+        <button class="btn more-info-btn" onclick="toggleMoreInfo()">Altre Info</button>
+        <div id="more-info-container" class="more-info-container">
+            <div class="more-info-content">
+                <button class="close-btn" onclick="toggleMoreInfo()">Chiudi</button>
+                <h2>Altre Info</h2>
+                <div class="info-item">
+                    <img src="images/info-icon.png" alt="Info Icon">
+                    <a href="https://solarismc.online/chisiamo">Chi Siamo</a>
+                </div>
+                <div class="info-item">
+                    <img src="images/staff-icon.png" alt="Staff Icon">
+                    <a href="https://solarismc.online/staff">Lista Staffers</a>
+                </div>
+                <div class="info-item">
+                    <img src="images/announcement-icon.png" alt="Announcement Icon">
+                    <a href="https://solarismc.online/annunci">Annunci</a>
+                </div>
+                <div class="info-item">
+                    <img src="images/staff-icon.png" alt="Staff Icon">
+                    <a href="https://solarismc.online/candidatura">Richiedi Candidatura Staff</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 SolarisMC. Tutti i diritti riservati.</p>
+        </div>
+    </div>
 </body>
 </html>
